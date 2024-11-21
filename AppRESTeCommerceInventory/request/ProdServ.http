@@ -1,0 +1,434 @@
+@api = http://localhost:3020/api/v1/prod-serv
+#@api = http://187.229.22.99:8010/api/v1/prod-serv
+### GET
+GET {{api}}/negocio/9001-1101
+### GET ITEM
+GET {{api}}/9001-000000000001
+
+### GET almacen
+GET {{api}}/almacen/alm0010
+
+### POST almacen
+POST {{api}}/negocio/9001-1101/almacen
+Content-Type: application/json
+
+{
+  "IdAlmacenOK": "alm009",
+  "Principal": "S",
+  "CantidadActual": 150,
+  "CantidadDisponible": 120,
+  "CantidadApartada": 15,
+  "CantidadTransito": 5,
+  "CantidadMerma": 3,
+  "StockMaximo": 200,
+  "StockMinimo": 30,
+  "info_ad": [],
+  "mvtos": [],
+  "series": []
+}
+
+
+### POST negocio
+POST {{api}}/9001/negocio
+Content-Type: application/json
+
+{
+  "IdNegocioOK": "9001-1103",
+  "ControlaSerie": "S",
+  "almacenes": [],
+  "detail_row": []
+}
+
+
+
+
+
+### POST serie
+POST {{api}}/almacen/alm007/serie
+Content-Type: application/json
+
+{
+  "Serie": "serie002",
+  "Placa": "placa002",
+  "Observacion": "observacion002",
+  "estatus_fisico": [
+    {
+      "IdTipoEstatusOK": "estatus001",
+      "Actual": "S",
+      "Observacion": "observacion_fisico",
+      "detail_row": {
+        "Activo": "S",
+        "Borrado": "N",
+        "detail_row_reg": {
+          "FechaReg": "2024-10-23T20:09:00.000Z",
+          "UsuarioReg": "usuario123"
+        }
+      }
+    }
+  ],
+  "estatus_venta": [
+    {
+      "IdTipoEstatusOK": "estatus002",
+      "Actual": "S",
+      "Observacion": "observacion_venta",
+      "detail_row": {
+        "Activo": "S",
+        "Borrado": "N",
+        "detail_row_reg": {
+          "FechaReg": "2024-10-23T20:09:00.000Z",
+          "UsuarioReg": "usuario123"
+        }
+      }
+    }
+  ],
+  "ubicaciones": [
+    {
+      "IdAlmacenOK": "alm002",
+      "Ubicacion": "ubicacion002",
+      "Actual": "S",
+      "detail_row": {
+        "Activo": "S",
+        "Borrado": "N",
+        "detail_row_reg": {
+          "FechaReg": "2024-10-23T20:09:00.000Z",
+          "UsuarioReg": "usuario123"
+        }
+      }
+    }
+  ],
+  "detail_row": {
+    "Activo": "S",
+    "Borrado": "N",
+    "detail_row_reg": {
+      "FechaReg": "2024-10-23T20:09:00.000Z",
+      "UsuarioReg": "usuario123"
+    }
+  }
+}
+
+
+### GET serie
+GET {{api}}/serie/422120602391
+
+### GET placa de serie
+GET {{api}}/serie/422120602391/placa
+
+
+### Put cantidad actual
+PUT {{api}}/almacen/CantidadActual/ALMA-1102-01
+Content-Type: application/json
+
+{ 
+    "CantidadActual": 30
+}
+
+### Put cantidad disponible
+PUT {{api}}/almacen/CantidadDisponible/ALMA-1102-01
+Content-Type: application/json
+
+{ 
+    "CantidadDisponible": 20
+}
+
+### Put cantidad Apartada
+PUT {{api}}/almacen/CantidadApartada/ALMA-1102-01
+Content-Type: application/json
+
+{ 
+    "CantidadApartada": 10
+}
+
+### GET ITEM
+GET {{api}}
+### GET ITEM
+GET {{api}}/15058?keyType=BK
+### POST ITEM PRODUCTO Y/O SERVICIO
+POST {{api}}
+Content-Type: application/json
+
+{
+  "IdInstitutoOK": "inst123",
+  "IdProdServOK": "prod456",
+  "IdPresentaOK": "pres789",
+  "negocios": [
+    {
+      "IdNegocioOK": "neg001",
+      "ControlaSerie": "S",
+      "almacenes": [
+        {
+          "IdAlmacenOK": "alm001",
+          "Principal": "S",
+          "CantidadActual": 100,
+          "CantidadDisponible": 80,
+          "CantidadApartada": 10,
+          "CantidadTransito": 5,
+          "CantidadMerma": 2,
+          "StockMaximo": 150,
+          "StockMinimo": 20,
+          "info_ad": [
+            {
+              "IdEtiquetaOK": "etq001",
+              "IdEtiqueta": "001",
+              "Etiqueta": "Etiqueta 1",
+              "Valor": "Valor 1",
+              "IdTipoSeccionOK": "sec001",
+              "Secuencia": 1,
+              "detail_row": {
+                "Activo": "S",
+                "Borrado": "N",
+                "detail_row_reg": {
+                  "FechaReg": "2024-10-22T20:09:00.000Z",
+                  "UsuarioReg": "usuario123"
+                }
+              }
+            }
+          ],
+          "mvtos": [
+            {
+              "CantidadMovto": 10,
+              "CantidadAnt": 90,
+              "CantidadAct": 100,
+              "IdTipoMovtoOK": "mov001",
+              "IdClaseMovtoOK": "clase001",
+              "Referencia": "ref001",
+              "detail_row": {
+                "Activo": "S",
+                "Borrado": "N",
+                "detail_row_reg": {
+                  "FechaReg": "2024-10-22T20:09:00.000Z",
+                  "UsuarioReg": "usuario123"
+                }
+              }
+            }
+          ],
+          "series": [
+            {
+              "Serie": "serie001",
+              "Placa": "placa001",
+              "Observacion": "observacion001",
+              "estatus_fisico": [
+                {
+                  "IdTipoEstatusOK": "estatus001",
+                  "Actual": "S",
+                  "Observacion": "observacion_fisico",
+                  "detail_row": {
+                    "Activo": "S",
+                    "Borrado": "N",
+                    "detail_row_reg": {
+                      "FechaReg": "2024-10-22T20:09:00.000Z",
+                      "UsuarioReg": "usuario123"
+                    }
+                  }
+                }
+              ],
+              "estatus_venta": [
+                {
+                  "IdTipoEstatusOK": "estatus002",
+                  "Actual": "S",
+                  "Observacion": "observacion_venta",
+                  "detail_row": {
+                    "Activo": "S",
+                    "Borrado": "N",
+                    "detail_row_reg": {
+                      "FechaReg": "2024-10-22T20:09:00.000Z",
+                      "UsuarioReg": "usuario123"
+                    }
+                  }
+                }
+              ],
+              "ubicaciones": [
+                {
+                  "IdAlmacenOK": "alm002",
+                  "Ubicacion": "ubicacion001",
+                  "Actual": "S",
+                  "detail_row": {
+                    "Activo": "S",
+                    "Borrado": "N",
+                    "detail_row_reg": {
+                      "FechaReg": "2024-10-22T20:09:00.000Z",
+                      "UsuarioReg": "usuario123"
+                    }
+                  }
+                }
+              ],
+              "detail_row": {
+                "Activo": "S",
+                "Borrado": "N",
+                "detail_row_reg": {
+                  "FechaReg": "2024-10-22T20:09:00.000Z",
+                  "UsuarioReg": "usuario123"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "detail_row": {
+        "Activo": "S",
+        "Borrado": "N",
+        "detail_row_reg": {
+          "FechaReg": "2024-10-22T20:09:00.000Z",
+          "UsuarioReg": "usuario123"
+        }
+      }
+    }
+  ],
+  "detail_row": {
+    "Activo": "S",
+    "Borrado": "N",
+    "detail_row_reg": {
+      "FechaReg": "2024-10-22T20:09:00.000Z",
+      "UsuarioReg": "usuario123"
+    }
+  }
+}
+
+
+### PUT ITEM PRODUCTO Y/O SERVICIO
+PUT {{api}}/100
+Content-Type: application/json
+
+{ 
+    "IdProdServPK" : 100, 
+    "IdProdServOK" : "100", 
+    "IdProdServBK" : "ENSA100", 
+    "IdProdServMaOK" : "1", 
+    "IdProdServMaBK" : "1", 
+    "DesProdServ" : "ENFRIADOR VERTICAL G326 2PTAS CO2", 
+    "IdUMedidaOK" : "1", 
+    "IdUMedidaBK" : "1", 
+    "cat_prod_serv_estatus" : [
+        {
+            "IdTipoGenEstatusOK" : "4", 
+            "IdGenEstatusOK" : "23", 
+            "TipoEstatus" : "VIGENTE", 
+            "Actual" : "S", 
+            "Observacion" : "Ninguna", 
+            "detail_row" : {
+                "FechaReg" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioReg" : "ErikMD"
+            }
+        }
+    ], 
+    "cat_prod_serv_paquetes" : [
+        {
+            "IdProdServOK" : "1", 
+            "IdProdServBK" : "1", 
+            "DesProdServ" : "ENFRIADOR VERTICAL G326 2PTAS CO2", 
+            "Cantidad" : 1.0, 
+            "IdUMedidaOK" : "1", 
+            "IdUMedidaBK" : "1", 
+            "detail_row" : {
+                "FechaReg" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioReg" : "ErikMD", 
+                "FechaUltMod" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioMod" : "ErikMD", 
+                "Activo" : "S", 
+                "Borrado" : "N"
+            }
+        }
+    ], 
+    "cat_prod_serv_archivos" : [
+        {
+            "DesArchivo" : "Foto del producto", 
+            "RutaArchivo" : "https://images.pexels.com/photos/3230214/pexels-photo-3230214.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260", 
+            "IdTipoGenArchivoOK" : "7", 
+            "IdGenArchivoOK" : "19", 
+            "TipoArchivo" : "IMAGEN", 
+            "IdTipoGenSeccionOK" : "", 
+            "IdGenSeccionOK" : "", 
+            "TipoSeccion" : "", 
+            "Secuencia" : 1, 
+            "Principal" : "S", 
+            "detail_row" : {
+                "FechaReg" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioReg" : "ErikMD", 
+                "FechaUltMod" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioMod" : "ErikMD", 
+                "Activo" : "S", 
+                "Borrado" : "N"
+            }
+        }
+    ], 
+    "cat_prod_serv_info_adicional" : [
+        {
+            "IdEtiqueta" : "IDMODELO", 
+            "Etiqueta" : "MODELO", 
+            "Valor" : "G326 2 PTAS CO2", 
+            "IdTipoGenSeccionOK" : "10", 
+            "IdGenSeccionOK" : "33", 
+            "TipoSeccion" : "SECCIÓN PRINCIPAL PRODUCTO SERVICIO", 
+            "Secuencia" : 10, 
+            "detail_row" : {
+                "FechaReg" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioReg" : "ErikMD", 
+                "FechaUltMod" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioMod" : "ErikMD", 
+                "Activo" : "S", 
+                "Borrado" : "N"
+            }
+        }, 
+        {
+            "IdEtiqueta" : "IDMARCA", 
+            "Etiqueta" : "MARCA", 
+            "Valor" : "IMBERA", 
+            "IdTipoGenSeccionOK" : "10", 
+            "IdGenSeccionOK" : "33", 
+            "TipoSeccion" : "SECCIÓN PRINCIPAL PRODUCTO SERVICIO", 
+            "Secuencia" : 20, 
+            "detail_row" : {
+                "FechaReg" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioReg" : "ErikMD", 
+                "FechaUltMod" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioMod" : "ErikMD", 
+                "Activo" : "S", 
+                "Borrado" : "N"
+            }
+        }, 
+        {
+            "IdEtiqueta" : "IDDIMENCIONMM", 
+            "Etiqueta" : "DIMENCIÓN EN MM", 
+            "Valor" : "1985/1000/658", 
+            "IdTipoGenSeccionOK" : "10", 
+            "IdGenSeccionOK" : "33", 
+            "TipoSeccion" : "SECCIÓN PRINCIPAL PRODUCTO SERVICIO", 
+            "Secuencia" : 30, 
+            "detail_row" : {
+                "FechaReg" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioReg" : "ErikMD", 
+                "FechaUltMod" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioMod" : "ErikMD", 
+                "Activo" : "S", 
+                "Borrado" : "N"
+            }
+        }, 
+        {
+            "IdEtiqueta" : "IDPESOKG", 
+            "Etiqueta" : "PESO EN KG", 
+            "Valor" : "152.500", 
+            "IdTipoGenSeccionOK" : "10", 
+            "IdGenSeccionOK" : "33", 
+            "TipoSeccion" : "SECCIÓN PRINCIPAL PRODUCTO SERVICIO", 
+            "Secuencia" : 40, 
+            "detail_row" : {
+                "FechaReg" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioReg" : "ErikMD", 
+                "FechaUltMod" : "2022-01-05T10:20:33+07:00", 
+                "UsuarioMod" : "ErikMD", 
+                "Activo" : "S", 
+                "Borrado" : "N"
+            }
+        }
+    ], 
+    "detail_row" : {
+        "FechaReg" : "2022-01-05T10:20:33+07:00", 
+        "UsuarioReg" : "ErikMD", 
+        "FechaUltMod" : "2022-01-05T10:20:33+07:00", 
+        "UsuarioMod" : "ErikMD", 
+        "Activo" : "S", 
+        "Borrado" : "N"
+    }
+}
+
+### DELETE ITEM PRODUCTO Y/O SERVICIO
+DELETE {{api}}/100
